@@ -1,2 +1,2 @@
 # Happy-Mother-Day
-该项目为母亲节祝福小网站，仅适用于个人学习与研究
+This project is a small website for Mother's Day greetings, which is only suitable for personal study and research
