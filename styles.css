@@ -1,0 +1,322 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'ZCOOL QingKe HuangYou', cursive;
+    background: linear-gradient(135deg, #ffb6c1, #ff69b4, #db7093);
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.container {
+    padding: 2rem;
+    max-width: 800px;
+    position: relative;
+}
+
+.title {
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: pulse 2s infinite;
+}
+
+.message {
+    font-size: 1.8rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.animated-text {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards;
+}
+
+.delay-1 {
+    animation-delay: 0.5s;
+}
+
+.delay-2 {
+    animation-delay: 1s;
+}
+
+.delay-3 {
+    animation-delay: 1.5s;
+}
+
+.delay-4 {
+    animation-delay: 2s;
+}
+
+.flowers {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.flower {
+    width: 60px;
+    height: 60px;
+    background-color: #ff69b4;
+    border-radius: 50% 50% 40% 40%;
+    position: relative;
+    animation: float 3s ease-in-out infinite;
+}
+
+.flower::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ff69b4;
+    border-radius: 50% 50% 40% 40%;
+    transform: rotate(60deg);
+}
+
+.flower::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ff69b4;
+    border-radius: 50% 50% 40% 40%;
+    transform: rotate(120deg);
+}
+
+.flower:nth-child(2) {
+    animation-delay: 0.5s;
+    background-color: #db7093;
+}
+
+.flower:nth-child(2)::before,
+.flower:nth-child(2)::after {
+    background-color: #db7093;
+}
+
+.flower:nth-child(3) {
+    animation-delay: 1s;
+    background-color: #ffb6c1;
+}
+
+.flower:nth-child(3)::before,
+.flower:nth-child(3)::after {
+    background-color: #ffb6c1;
+}
+
+.hearts {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    transform: rotate(45deg);
+    animation: falling linear infinite;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.heart::after {
+    top: 0;
+    left: -10px;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes falling {
+    to {
+        top: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .title {
+        font-size: 2.5rem;
+    }
+    
+    .message {
+        font-size: 1.4rem;
+    }
+    
+    .flower {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+body.night-mode {
+    background: linear-gradient(135deg, #3a2a4a, #6b3d6b, #8d4c8d);
+    color: #f8e1f7;
+}
+
+.night-mode .title {
+    text-shadow: 0 0 10px #ff9ec6, 0 0 20px #ff6b9e;
+    color: #ffd6e9;
+}
+
+.night-mode .flower {
+    background-color: #c77bc4;
+    box-shadow: 0 0 15px rgba(199, 123, 196, 0.7);
+}
+.night-mode .flower::before, 
+.night-mode .flower::after {
+    background-color: #c77bc4;
+}
+
+.night-mode #music-btn {
+    background: rgba(200, 150, 200, 0.3);
+    color: #f8e1f7;
+}
+
+#dark-mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    z-index: 100;
+    transition: all 0.6s ease;
+    transform: scale(1);
+}
+
+#dark-mode-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+    transition-duration: 0.8s;
+}
+
+#dark-mode-toggle:active {
+    transform: scale(0.95);
+}
+
+.night-mode #dark-mode-toggle {
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.author-info {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: fit-content;
+    transition: all 0.6s ease;
+    transform: scale(1);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    padding: 12px 25px;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.author-profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100%;
+    justify-content: center;
+}
+
+.author-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+.author-name {
+    font-size: 1.3rem;
+    color: white;
+    font-weight: bold;
+    white-space: nowrap;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.5px;
+}
+
+.github-button {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.35);
+    color: white;
+    padding: 8px 18px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 1rem;
+    min-width: 180px;
+    justify-content: center;
+    transition: all 0.6s ease;
+    transform: scale(1);
+}
+
+.github-button:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.github-icon {
+    margin-left: 5px;
+}
+
+.night-mode .author-info {
+    background: rgba(58, 42, 74, 0.8);
+}
+.night-mode .github-button {
+    background: rgba(199, 123, 196, 0.4);
+}
